@@ -17,9 +17,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
+
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.UUID;
 
 @Service
@@ -47,9 +50,11 @@ public class AuthServiceImpl implements AuthService {
             );
 
         }
-
+        List<String> roles = new ArrayList<>();
+        String role = String.valueOf(user.getRole());
+        roles.add(role);
         String accessToken =
-                jwtUtil.generateAccessToken(user.getId(), user.getUsername());
+                jwtUtil.generateAccessToken(user.getId(), user.getUsername(), roles);
 
         UUID refreshTokenId = UUID.fromString(UUID.randomUUID().toString());
 
@@ -80,8 +85,13 @@ public class AuthServiceImpl implements AuthService {
         User user = userRepo.findById(oldToken.getUser().getId())
                 .orElseThrow();
 
+        List<String> roles = new ArrayList<>();
+        String role = String.valueOf(user.getRole());
+        roles.add(role);
+
+
         String newAccess =
-                jwtUtil.generateAccessToken(user.getId(), user.getUsername());
+                jwtUtil.generateAccessToken(user.getId(), user.getUsername(),roles);
 
         UUID refreshTokenId = UUID.randomUUID();
 

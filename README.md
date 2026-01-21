@@ -1,2 +1,2 @@
-# auth-service
-service for authentication
+# user-service
+user services for manage service

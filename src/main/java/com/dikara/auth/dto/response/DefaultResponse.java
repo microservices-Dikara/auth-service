@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @SuperBuilder
 @Getter
 @Setter
-public class BaseResponse {
+public class DefaultResponse {
 
 
     private String createdBy;

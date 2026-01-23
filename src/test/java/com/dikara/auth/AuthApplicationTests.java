@@ -1,10 +1,10 @@
-package com.dikara.cruds;
+package com.dikara.auth;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CrudsApplicationTests {
+class AuthApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import org.springframework.boot.webmvc.error.ErrorController;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -37,7 +37,7 @@ import java.util.Map;
 @RestControllerAdvice
 @Slf4j
 @AllArgsConstructor
-public class RestErrorHandlerControllerAdviser implements ErrorController {
+public class RestErrorHandlerControllerAdviser  {
 
   @ExceptionHandler(Exception.class)
   @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)

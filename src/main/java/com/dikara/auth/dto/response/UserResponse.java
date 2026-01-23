@@ -11,7 +11,7 @@ import java.util.UUID;
 @SuperBuilder
 @Getter
 @Setter
-public class UserResponse extends BaseResponse {
+public class UserResponse extends DefaultResponse {
     private UUID id;
     private String name;
     private String username;

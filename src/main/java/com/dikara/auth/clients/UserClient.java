@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 public interface UserClient {
 
     @GetMapping("/user/me")
-    UserResponse getCurrentUser(
+    BaseResponse<UserResponse> getCurrentUser(
             @RequestHeader("Authorization") String token
     );
 }

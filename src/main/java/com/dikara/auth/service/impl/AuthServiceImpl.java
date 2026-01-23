@@ -1,6 +1,7 @@
 package com.dikara.auth.service.impl;
 
 import com.dikara.auth.clients.UserClient;
+import com.dikara.auth.constant.BaseResponse;
 import com.dikara.auth.constant.GlobalMessage;
 import com.dikara.auth.dto.request.LoginRequest;
 import com.dikara.auth.dto.request.RefreshRequest;
@@ -124,10 +125,10 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public UserResponse getProfile(String token) {
-        UserResponse resp = userClient
+        BaseResponse<UserResponse> resp = userClient
                 .getCurrentUser(token);
 
 
-        return resp;
+        return resp.getData();
     }
 }

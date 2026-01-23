@@ -1,9 +1,11 @@
 package com.dikara.auth.service.impl;
 
+import com.dikara.auth.clients.UserClient;
 import com.dikara.auth.constant.GlobalMessage;
 import com.dikara.auth.dto.request.LoginRequest;
 import com.dikara.auth.dto.request.RefreshRequest;
 import com.dikara.auth.dto.response.LoginResponse;
+import com.dikara.auth.dto.response.UserResponse;
 import com.dikara.auth.entity.RefreshTokens;
 import com.dikara.auth.entity.User;
 import com.dikara.auth.exception.BusinessException;
@@ -35,6 +37,7 @@ public class AuthServiceImpl implements AuthService {
     private final RefreshTokensRepository  refreshRepo;
     private final JWTUtil jwtUtil;
     private final PasswordEncoder encoder;
+    private final UserClient userClient;
     @Override
     public LoginResponse login(LoginRequest req) {
 
@@ -117,5 +120,14 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public void logoutAll(UUID userId) {
         refreshRepo.revokeAllByUserId(userId);
+    }
+
+    @Override
+    public UserResponse getProfile(String token) {
+        UserResponse resp = userClient
+                .getCurrentUser(token);
+
+
+        return resp;
     }
 }

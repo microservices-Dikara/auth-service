@@ -3,12 +3,10 @@ package com.dikara.auth.controller;
 import com.dikara.auth.dto.request.LoginRequest;
 import com.dikara.auth.dto.request.RefreshRequest;
 import com.dikara.auth.dto.response.LoginResponse;
+import com.dikara.auth.dto.response.UserResponse;
 import com.dikara.auth.service.AuthService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
@@ -30,5 +28,12 @@ public class AuthController {
     @PostMapping("/logout")
     public void logout(@RequestBody RefreshRequest req) {
         authService.logout(req.refreshToken());
+    }
+
+    @GetMapping("/me")
+    public UserResponse me(
+            @RequestHeader("Authorization") String token
+    ) {
+        return  authService.getProfile(token);
     }
 }

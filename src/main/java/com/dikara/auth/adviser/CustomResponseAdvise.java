@@ -25,7 +25,7 @@ import java.util.Objects;
 
 
 
-@RestControllerAdvice(basePackages = {"com.dikara.cruds.controller"})
+@RestControllerAdvice(basePackages = {"com.dikara.auth.controller"})
 @Slf4j
 public final class CustomResponseAdvise extends BaseTransactionController implements ResponseBodyAdvice<Object> {
 

@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 
 @Data
 @SuperBuilder
-@Getter
-@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class DefaultResponse {
 
 

@@ -11,6 +11,6 @@ public interface UserClient {
 
     @GetMapping("/user/me")
     BaseResponse<UserResponse> getCurrentUser(
-            @RequestHeader("Authorization") String token
+            @RequestHeader("X-User-Id") String userId
     );
 }
